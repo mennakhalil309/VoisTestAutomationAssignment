@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.User">
+      <class name="tests.SearchVideoTest">
         <methods>
-          <include name="GetUser"/>
+          <include name="startDriver"/>
+          <include name="stopDriver"/>
+          <include name="VideoTitleInSearchResulSameAsInDetailsPage"/>
         </methods>
-      </class> <!-- tests.User -->
+      </class> <!-- tests.SearchVideoTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

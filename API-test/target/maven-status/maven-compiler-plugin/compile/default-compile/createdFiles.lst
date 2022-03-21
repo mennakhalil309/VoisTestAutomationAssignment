@@ -1,0 +1,4 @@
+pages\PageBase.class
+pages\SearchResultPage.class
+pages\VideoDetailsPage.class
+pages\HomePage.class
