@@ -13,4 +13,16 @@
       </class> <!-- tests.SearchVideoTest -->
     </classes>
   </test> <!-- Firefox Test(failed) -->
+  <test thread-count="2" parallel="tests" name="Chrome Test(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="tests.SearchVideoTest">
+        <methods>
+          <include name="startDriver"/>
+          <include name="stopDriver"/>
+          <include name="VideoTitleInSearchResulSameAsInDetailsPage"/>
+        </methods>
+      </class> <!-- tests.SearchVideoTest -->
+    </classes>
+  </test> <!-- Chrome Test(failed) -->
 </suite> <!-- Failed suite [Youtube Test Suite] -->

@@ -1,16 +1,14 @@
 package tests;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -19,7 +17,7 @@ public class TestBase {
 
 	public static WebDriver driver;
 	
-	@BeforeSuite
+	@BeforeMethod
 	@Parameters(value = {"browser"})
 	public void startDriver(@Optional("chrome") String browser) throws MalformedURLException { 
 		if(driver == null) {
@@ -38,7 +36,7 @@ public class TestBase {
 		}
 	}	
 	
-	@AfterSuite
+	@AfterMethod
 	public void stopDriver() {
 		driver.quit();
 	}

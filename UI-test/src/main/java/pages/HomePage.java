@@ -21,9 +21,11 @@ public class HomePage extends PageBase {
 	
 	public void enterSearchKeyword(String searchKeyword) throws InterruptedException {
 		setTextElementText(searchTxtbox, searchKeyword);
-		Thread.sleep(1000);
-		clickButton(searchBtn);
+		//Thread.sleep(1000);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		wait.until(ExpectedConditions.urlContains("results"));
+		wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
+		clickButton(searchBtn);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.titleContains(searchKeyword));
 	}
 }

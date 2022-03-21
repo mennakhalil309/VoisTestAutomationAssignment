@@ -30,11 +30,11 @@ public class SearchResultPage extends PageBase {
 		jse = (JavascriptExecutor)driver;
 		jse.executeScript("arguments[0].click();", filterBtn);
 		
-		action = new Actions(driver);
-		action.moveToElement(videoTypeFilterBtn).click().perform();
-	//	wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	//	wait.until(ExpectedConditions.visibilityOf(filterCollapseWindow));
-	//	clickButton(videoTypeFilterBtn);
+//		action = new Actions(driver);
+//		action.moveToElement(videoTypeFilterBtn).click().perform();
+		
+		jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].click();", videoTypeFilterBtn);
 	}
 
 	public void selectVideo(int videoNumber) {

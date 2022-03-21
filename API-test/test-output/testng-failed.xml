@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" parallel="tests" name="Failed suite [Youtube Test Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="2" parallel="tests" name="Firefox Test(failed)">
-    <parameter name="browser" value="firefox"/>
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.SearchVideoTest">
+      <class name="tests.User">
         <methods>
-          <include name="startDriver"/>
-          <include name="stopDriver"/>
-          <include name="VideoTitleInSearchResulSameAsInDetailsPage"/>
+          <include name="GetUser"/>
         </methods>
-      </class> <!-- tests.SearchVideoTest -->
+      </class> <!-- tests.User -->
     </classes>
-  </test> <!-- Firefox Test(failed) -->
-  <test thread-count="2" parallel="tests" name="Chrome Test(failed)">
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="tests.SearchVideoTest">
-        <methods>
-          <include name="startDriver"/>
-          <include name="stopDriver"/>
-          <include name="VideoTitleInSearchResulSameAsInDetailsPage"/>
-        </methods>
-      </class> <!-- tests.SearchVideoTest -->
-    </classes>
-  </test> <!-- Chrome Test(failed) -->
-</suite> <!-- Failed suite [Youtube Test Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
