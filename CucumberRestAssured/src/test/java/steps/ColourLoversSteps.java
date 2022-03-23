@@ -1,9 +1,6 @@
 package steps;
 
 
-
-import static io.restassured.RestAssured.given;
-
 import org.testng.Assert;
 
 import cucumber.api.java.en.Given;
@@ -34,12 +31,13 @@ public class ColourLoversSteps {
 	public void user_submit_GET_request() throws Throwable {
 	   RestAssured.baseURI = BASE_URL;
 	   request = RestAssured.given();
-//	   request.header("Host",  "developer.mozilla.org");
-	   request.header("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36");
+	   request.header("Host",  "www.colourlovers.com");
+	   request.header("User-Agent","PostmanRuntime/7.29.0");
+	   
 	}
 	@When("^User submit GET request to colour lovers$")
 	public void submit_GET_request() throws Throwable {
-		response=given().when().get(BASE_URL).then().extract().response();
+		response=request.given().when().get(BASE_URL).then().extract().response();
         System.out.println("Response: " + response.toString());
 	}
 
@@ -50,7 +48,7 @@ public class ColourLoversSteps {
 
 	@When("^User Get colour pattern$")
 	public void user_Get_colour_pattern() throws Throwable {
-		responseStr = given().contentType(ContentType.JSON).when().get(BASE_URL)
+		responseStr = request.given().contentType(ContentType.JSON).when().get(BASE_URL)
 				.then().extract().body().asString();
         System.out.println(responseStr);
         	}
@@ -65,13 +63,15 @@ public class ColourLoversSteps {
         				responseStr.getBytes("UTF-8"));
         				Document doc = builder.parse(input);
         				doc.getDocumentElement().normalize();
+        				System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
         				 NodeList nList = doc.getElementsByTagName("pattern");
-        				
+        				 
         				  for (int temp = 0; temp < nList.getLength(); temp++) {
         			            Node nNode = nList.item(temp);
+        			            
         			            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
         			                Element eElement = (Element) nNode;
-        			            String text = eElement.getAttribute("numViews");
+        			            String text = eElement.getElementsByTagName("numViews").item(0).getTextContent();
         			            long numLong = Long.valueOf(text);
         			            boolean isRightnumViewsRang = numLong>4000;
         			            Assert.assertTrue(isRightnumViewsRang);
