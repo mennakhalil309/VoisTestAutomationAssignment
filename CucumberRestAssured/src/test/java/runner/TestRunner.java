@@ -4,7 +4,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
-        plugin = {"json:target/positive/cucumber.json", "pretty", "html:target/positive/cucumber.html","com.cucumber.listener.ExtentCucumberFormatter"},
+        plugin = { "pretty", "html:target/cucumber-html-report"},
         features = "src/test/java/features",
         glue = "steps" )
 public class TestRunner extends AbstractTestNGCucumberTests {
